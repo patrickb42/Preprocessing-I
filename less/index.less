@@ -1,59 +1,409 @@
 // Is this working?
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* PORTABLE */
 /* Set every element's box-sizing to border-box */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+html {
+  // this is roughly 10px on a normal view
+  font-size: 62.5%;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+@min-width: 350px;
+@tablet-min-width: 510px;
+@desktop-min-width: 900px;
+@max-width: 1100px;
+
+//* {border: 1px solid red !important;}
+
+
+/* CUSTOM */
+.border-rad {
+  border-radius: .7rem;
+}
+.summary-text-alignment {
+  text-align: center;
+
+  @media (min-width: @desktop-min-width) {
+    text-align: left;
+  }
+}
+.lower-sections {
+  text-align: center;
+  margin: 0 auto 4rem;
+
+  @media (min-width: @tablet-min-width) {
+    text-align: left;
+    margin: 0 auto 2rem;
+  }
+}
+html {
+  background-color: white;
+}
+
+body {
+  font-size: 1.6rem;
+  min-width: @min-width;
+  max-width: @max-width;
+  margin: 0 auto;
+  background-color: #FAFAFA;
+  font-family: sans-serif;
+}
+
+// nav bar
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (min-width: @tablet-min-width) {
+    flex-direction: row;
+  }
+  @media (min-width: @desktop-min-width) {
+    justify-content: flex-end;
+  }
+
+  a {
+    font-size: 3rem;
+    color: aqua;
+    text-align: center;
+    text-decoration: none;
+    padding: 1.5rem 0;
+
+    &:hover {
+        background-color: #EEE;
+    }
+
+    @media (min-width: @tablet-min-width) {
+      font-size: 2rem;
+      padding: 0;
+      margin: 1.5rem 5%;
+
+      &:hover {
+        background-color: white;
+      }
+    }
+    @media (min-width: @desktop-min-width) {
+//      margin: 1.5rem auto;
+    }
+  }
+}
+
+
+// index.html main content
+.index {
+  margin: 0 auto;
+  width: 94%;
+
+  @media (min-width: @tablet-min-width) {
+    display: grid;
+    grid-template-columns: repeat(12, 5.583333333%);
+    grid-template-rows: auto;
+    grid-column-gap: 3%;
+    grid-template-areas:
+        "summary summary summary summary summary summary summary summary summary summary summary summary"
+        "my-story my-story my-story my-story my-story my-story skills skills skills skills skills skills"
+        "work-history work-history work-history work-history work-history work-history work-history work-history work-history work-history work-history work-history";
+    width: 92%;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+  }
+
+  .summary {
+    background-color: #E8E8E8;
+    width: 107%;
+    padding: 2rem;
+    margin: 0 -3.5% 4rem;
+
+    @media (min-width: @tablet-min-width) {
+      .border-rad();
+      width: 100%;
+      margin: 0 auto;
+      grid-area: summary;
+    }
+
+    div {
+      .border-rad();
+      width: 100%;
+
+      @media (min-width: @tablet-min-width) {
+        width: 400px;
+        margin: 0 auto;
+      }
+      @media (min-width: @desktop-min-width) {
+        width: 300px;
+        margin: 0;
+      }
+
+      img {
+        width: 100%;
+        margin: 1rem 0;
+      }
+    }
+
+    h1 {
+      .summary-text-alignment();
+      font-size: 3rem;
+      margin: 1.5rem auto;
+
+      @media (min-width: @desktop-min-width) {
+        font-size: 3rem;
+      }
+    }
+
+    .tagline {
+      .summary-text-alignment();
+      width: 100%;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid #CCC;
+    }
+    .introduction {
+      .summary-text-alignment();
+      padding: 2rem 0;
+    }
+    button {
+      display: block;
+      background-color: #888;
+      color: white;
+      font-size: 2rem;
+      padding: 1rem 3rem;
+      border: none;
+      margin: 0 auto;
+
+      @media (min-width: @desktop-min-width) {
+        display: inline-block;
+      }
+    }
+  }
+
+  .my-story {
+    .lower-sections();
+
+    @media (min-width: @tablet-min-width) {
+      grid-area: my-story;
+    }
+
+  }
+
+  .skills {
+    .lower-sections();
+    @media (min-width: @tablet-min-width) {
+      grid-area: skills;
+      width: 100%;
+    }
+
+    a {
+      .border-rad();
+      display: inline-block;
+      width: 100%;
+      margin: .5%;
+      text-decoration: none;
+      padding: 1rem;
+      border: 1px solid #DDD;
+
+      @media (min-width: @tablet-min-width) {
+        grid-area: skills;
+        width: 48%;
+      }
+
+      &:last-child {
+        border-bottom: 1px solid #DDD;
+      }
+
+      &:hover {
+        background-color: #EEE;
+      }
+    }
+  }
+
+  .work-history {
+    .lower-sections();
+    width: 100%;
+
+    @media (min-width: @tablet-min-width) {
+      grid-area: work-history;
+    }
+
+    table {
+      width: 100%;
+      max-width: 100%;
+
+      th {
+        font-weight: bold;
+        border-top: 1px solid #CCC;
+        border-bottom: 1px solid #CCC;
+      }
+
+      th:first-child, td:first-child {
+        padding-left: 1rem;
+      }
+
+      tr * {
+        padding: 1.25rem 0;
+      }
+
+      tr:nth-child(even) {
+        background-color: #EEE;
+      }
+    }
+  }
+}
+
+
+// footer
+footer {
+  background-color: #888;
+
+  p {
+    font-size: 1.6rem;
+    color: white;
+    text-align: center;
+    padding: 3rem 0 4rem;
+  }
+}
